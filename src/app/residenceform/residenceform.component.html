@@ -1,0 +1,26 @@
+<form [formGroup]="residenceForm">
+    <div class="mb-3">
+      <label for="exampleInputname" class="form-label">Residence name </label>
+      <input type="text" class="form-control" id="exampleInputname" aria-describedby="nameHelp" formControlName="name">
+      
+    </div>
+    <div *ngIf="this.residenceForm.get('name')?.invalid && this.residenceForm.get('name')?.touched ">
+        <span *ngIf="name?.hasError('required')" style="color:red;">le nom n'est pas vide</span>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputaddr" class="form-label">adresse</label>
+      <input type="text" class="form-control" id="exampleInputaddr" formControlName="address">
+    </div>
+
+    <div class="mb-3">
+        <label for="exampleInputstatus" class="form-label">status</label>
+        <input type="text" class="form-control" id="exampleInputstatus" formControlName="status">
+      </div>
+
+      <div class="mb-3">
+        <label for="exampleInputimg" class="form-label">image</label>
+        <input type="file" class="form-control" id="exampleInputimg" formControlName="img">
+      </div>
+    
+    <button type="submit" class="btn btn-primary"  >Submit</button>
+  </form>

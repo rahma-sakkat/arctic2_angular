@@ -7,10 +7,10 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href={{url}} (click)="clickme">{{link1}}</a>
+            <a class="nav-link active" aria-current="page" routerLink="home">{{link1}}</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">{{link2}}</a>
+            <a class="nav-link"  routerLink="residences">{{link2}}</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -24,7 +24,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Contact</a>
+            <a class="nav-link "  tabindex="-1" routerLink="addresidence" >add residence</a>
           </li>
         </ul>
         <form class="d-flex">

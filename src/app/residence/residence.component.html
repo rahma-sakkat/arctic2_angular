@@ -13,7 +13,7 @@
 <div *ngFor="let res of  filteredResidences()">
 
   
-
+<div style="display: flex; flex-wrap: wrap">
 <div class="card" style="width: 18rem;">
     <img [src]="res.image" class="card-img-top" alt="...">
     <div class="card-body">
@@ -40,12 +40,13 @@
       <p *ngIf="addressVisibility[res.id]">
         {{ res.address === 'inconnu' ? 'Adresse inconnue' : res.address }}
       </p>
-
+      <button class="btn btn-primary" routerLink= "details/{{res.id}}" >Details</button>
       <button class="btn btn-outline-danger" (click)="toggleLike(res.id)">
         <i class="bi bi-heart" [class.text-danger]="res.isLiked"></i> {{ res.isLiked ? 'Retirer des favoris' : 'Ajouter aux favoris' }}
       </button>
-     
+    
      <!-- <a href="#" class="btn btn-primary">Go somewhere</a>-->
     </div>
   </div>
+</div>
 </div>

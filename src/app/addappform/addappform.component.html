@@ -1,0 +1,92 @@
+<form [formGroup]="appForm">
+    <div class="mb-3">
+      <label for="exampleInputnumber" class="form-label">app number </label>
+      <input type="number" class="form-control" id="exampleInputnumber" aria-describedby="nameHelp" formControlName="appnumber">
+      
+    </div>
+    <div *ngIf="this.appForm.get('appnumber')?.invalid && this.appForm.get('appnumber')?.touched ">
+        <span *ngIf="this.appForm.get('appnumber')?.hasError('required')" style="color:red;">Appartement number is not empty </span>
+    </div>
+    <br/>
+    <div *ngIf="this.appForm.get('appnumber')?.hasError('pattern') && this.appForm.get('appnumber') ?.touched">
+        <p class="error-message">Please enter a valid number.</p>
+      </div>
+
+    <div class="mb-3">
+        <label for="exampleInputfloor" class="form-label">Surface</label>
+        <input type="text" class="form-control" id="exampleInputnumber" aria-describedby="nameHelp" formControlName="surface">
+        
+      </div>
+      
+      <div *ngIf="this.appForm.get('surface')?.invalid && this.appForm.get('surface')?.touched ">
+        <span *ngIf="this.appForm.get('surface')?.hasError('required')" style="color:red;">Surface is not empty </span>
+    </div>
+
+    
+    <div *ngIf="this.appForm.get('surface')?.hasError('pattern') && this.appForm.get('appnumber') ?.touched">
+        <p class="error-message">Please enter a valid number.</p>
+      </div>
+
+
+      <div class="mb-3">
+        <label for="exampleInputfloor" class="form-label">Floor number </label>
+        <input type="number" class="form-control" id="exampleInputnumber" aria-describedby="nameHelp" formControlName="floornumber">
+        
+      </div>
+
+      <div *ngIf="this.appForm.get('floornumber')?.invalid && this.appForm.get('floornumber')?.touched ">
+        <span *ngIf="this.appForm.get('floornumber')?.hasError('required')" style="color:red;">Floor is not empty </span>
+    </div>
+
+    <div *ngIf="this.appForm.get('floornumber')?.hasError('pattern') && this.appForm.get('floornumber') ?.touched">
+        <p class="error-message">Please enter a valid number.</p>
+      </div>
+
+    
+      <div class="form-check">
+        <label> Terasse </label> <br/>
+        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+        <label class="form-check-label" for="exampleRadios1">
+          Yes
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+        <label class="form-check-label" for="exampleRadios2">
+         No
+        </label>
+      </div>
+
+
+     
+      <div class="form-check">
+        <label> Category</label> <br/>
+        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+        <label class="form-check-label" for="exampleRadios1">
+          S+1
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+        <label class="form-check-label" for="exampleRadios2">
+         S+2
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+        <label class="form-check-label" for="exampleRadios2">
+         S+3
+        </label>
+      </div>
+
+      <select class="form-select" aria-label="Default select example">
+        <option selected>Residence</option>
+        <option value="1"></option>
+        
+      </select>
+    
+
+    <button type="submit" class="btn btn-primary"  >Add</button>
+    <button type="submit" class="btn btn-primary disabled"  >Reset </button>
+  </form>
+

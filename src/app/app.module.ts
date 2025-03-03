@@ -5,19 +5,29 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FirstcomponentComponent } from './firstcomponent/firstcomponent.component';
 import { HeaderComponent } from './header/header.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ResidenceComponent } from './residence/residence.component';
+import { ResidencedetailsComponent } from './residencedetails/residencedetails.component';
+import { HomeComponent } from './home/home.component';
+import { NotfoundComponent } from './notfound/notfound.component';
+import { ResidenceformComponent } from './residenceform/residenceform.component';
+import { AddappformComponent } from './addappform/addappform.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FirstcomponentComponent,
     HeaderComponent,
-    ResidenceComponent
+    ResidenceComponent,
+    ResidencedetailsComponent,
+    HomeComponent,
+    NotfoundComponent,
+    ResidenceformComponent,
+    AddappformComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,FormsModule
+    AppRoutingModule,FormsModule,ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Residence } from 'src/core/Models/Residence';
+import { ResidenceService } from 'src/core/Services/residence.service';
 
 @Component({
   selector: 'app-residence',
@@ -7,6 +8,12 @@ import { Residence } from 'src/core/Models/Residence';
   styleUrls: ['./residence.component.css']
 })
 export class ResidenceComponent {
+  constructor(private rs:ResidenceService) {
+   // this.address:string ;
+   //address: String= '';
+
+  }
+
   address:string="";
   // Tableau des résidences favoris (les identifiants)
   favorites: number[] = [];
@@ -14,13 +21,8 @@ export class ResidenceComponent {
   // Requête de recherche pour l'adresse
   searchQuery: string = '';
   //showLocation?: boolean;
-  listResidences:Residence[]=[
-    {id:1,"name": "El fel","address":"Borj Cedria","image":"../../assets/images/R1.jpg", status: "Disponible", isLiked: false },
-    {id:2,"name": "El yasmine","address":"Ezzahra","image":"../../assets/images/R2.jpg", status:"Disponible", isLiked: false  },
-    {id:3,"name": "El Arij","address":"Rades","image":"../../assets/images/R3.jpg", status:"Vendu", isLiked: false },
-    {id:4,"name": "El Anber","address":"inconnu","image":"../../assets/images/R4.jpg", status: "En Construction", isLiked: false }
-    ];
   
+   
  addressVisibility: { [key: number]: boolean } = {};
 
   showLocation(residenceId: number,address: string): void {
@@ -50,7 +52,7 @@ export class ResidenceComponent {
 
   filteredResidences() {
     return this.listResidences.filter(res =>
-      res.name.toLowerCase().includes(this.searchQuery.toLowerCase())
+      res.address.toLowerCase().includes(this.searchQuery.toLowerCase())
     );
   }
 
