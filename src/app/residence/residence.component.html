@@ -1,0 +1,51 @@
+<h1>  Liste des residences</h1>
+
+<!-- Champ de recherche -->
+<div class="form-group">
+  <input
+    type="text"
+    class="form-control"
+    placeholder="Rechercher une résidence"
+    [(ngModel)]="searchQuery"
+  />
+</div>
+
+<div *ngFor="let res of  filteredResidences()">
+
+  
+
+<div class="card" style="width: 18rem;">
+    <img [src]="res.image" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h3 class="card-title">{{res.name}}</h3>
+   
+    
+
+      <div class="status">
+        <div *ngIf="res.status === 'Disponible'">
+          <p class="text-success"><strong>Disponible</strong></p>
+        </div>
+
+        <div *ngIf="res.status === 'En Construction'">
+          <p class="text-warning"><strong>En Construction</strong></p>
+        </div>
+
+        <div *ngIf="res.status === 'Vendu'">
+          <p class="text-muted"><strong>Vendu</strong></p>
+        </div>
+      </div>
+        
+      <!-- Bouton pour afficher l'adresse -->
+      <a class="btn btn-primary" (click)="showLocation(res.id, res.address)">Show Location</a>
+      <p *ngIf="addressVisibility[res.id]">
+        {{ res.address === 'inconnu' ? 'Adresse inconnue' : res.address }}
+      </p>
+
+      <button class="btn btn-outline-danger" (click)="toggleLike(res.id)">
+        <i class="bi bi-heart" [class.text-danger]="res.isLiked"></i> {{ res.isLiked ? 'Retirer des favoris' : 'Ajouter aux favoris' }}
+      </button>
+     
+     <!-- <a href="#" class="btn btn-primary">Go somewhere</a>-->
+    </div>
+  </div>
+</div>
