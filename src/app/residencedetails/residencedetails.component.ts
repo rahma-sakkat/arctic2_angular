@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Residence } from 'src/core/Models/Residence';
+import { ResidenceService } from 'src/core/Services/residence.service';
 import { __param } from 'tslib';
 
 @Component({
@@ -8,16 +10,18 @@ import { __param } from 'tslib';
   styleUrls: ['./residencedetails.component.css']
 })
 export class ResidencedetailsComponent {
-constructor(private  act:ActivatedRoute){
+  id!: number;
+  res: Residence | undefined;
+  constructor(private act: ActivatedRoute, private rs: ResidenceService) {}
 
-
-}
-
-id:number =this.act.snapshot.params['id']
-ngOnInit(){
-
- // this.id = this.act.snapshot.params['id'];
- this.act.paramMap.subscribe(
-    param=>this.id=Number (param.get('id')))
-}
+  ngOnInit() {
+    // this.id = this.act.snapshot.params['id'];
+    this.act.paramMap.subscribe((param) => {
+      this.id = Number(param.get('id'));
+    });
+    this.rs
+      .getResidenceById(this.id)
+      .subscribe((residence) => (this.res = residence));
+    console.log(this.res);
+  }
 }

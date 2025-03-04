@@ -8,53 +8,42 @@ import { ResidenceService } from 'src/core/Services/residence.service';
   styleUrls: ['./residence.component.css']
 })
 export class ResidenceComponent {
-  constructor(private rs:ResidenceService) {
-   // this.address:string ;
-   //address: String= '';
-
-  }
-
-  address:string="";
-  // Tableau des résidences favoris (les identifiants)
-  favorites: number[] = [];
-
-  // Requête de recherche pour l'adresse
-  searchQuery: string = '';
-  //showLocation?: boolean;
-  
-   
- addressVisibility: { [key: number]: boolean } = {};
-
-  showLocation(residenceId: number,address: string): void {
+  constructor(private rs:ResidenceService){}
+  address: string = '';
+  adress: string = '';
+  date:Date= new Date();
+  listFavorite: Residence[] = [];
+  listFiltred: Residence[] = [];
+  listResidence: Residence[] = [];
+  showLocation(address: string) {
     if (address === 'inconnu') {
-      alert("L'adresse de cette résidence est inconnue");
+      return alert("l'adresse est inconnue");
     } else {
-        
-       console.log(this.addressVisibility[residenceId] = true) ;
-      
+      return alert("l'adresse est  " + address);
+    }
+  }
+// première méthode
+  addToFavorite1(res: Residence) {
+    if (this.listFavorite.indexOf(res)==-1) {
+      this.listFavorite.push(res);
     }
   }
 
-  toggleLike(residenceId: number): void {
-    const residence = this.listResidences.find(res => res.id === residenceId);
-    if (residence) {
-      residence.isLiked = !residence.isLiked;
-      if (residence.isLiked) {
-        this.favorites.push(residenceId);  // Ajouter aux favoris
-      } else {
-        const index = this.favorites.indexOf(residenceId);
-        if (index > -1) {
-          this.favorites.splice(index, 1);  // Retirer des favoris
-        }
-      }
-    }
+  // deuxième méthode
+  addToFavorite2(res: Residence) {
+    // if (this.listFavorite.includes(res)) {
+    //   this.listFavorite.push(res);
+    // }
   }
 
-  filteredResidences() {
-    return this.listResidences.filter(res =>
-      res.address.toLowerCase().includes(this.searchQuery.toLowerCase())
-    );
+  filterByAdress(){
+    // this.listFiltred=this.listResidences;
+    this.rs.getResidenceList().subscribe(result=>this.listResidence=result)
+    return this.listResidence.filter(res=>(res.address.toLowerCase().includes(this.adress.toLowerCase())))
   }
 
 
+  delete(id:number){
+    this.rs.deleteResidence(id).subscribe(()=>alert("residence deleted!!!"))
+  }
 }
